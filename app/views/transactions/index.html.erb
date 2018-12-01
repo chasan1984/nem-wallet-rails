@@ -1,0 +1,19 @@
+<h1>NEM Wallet</h1>
+<%= link_to "HOME", :controller => "home", :action => "index" %>
+
+<h2>送金</h2>
+<%= form_with scope: :transaction, url: transactions_path do |f| %>
+  <%= f.label :address, '宛先: ' %>
+  <%= f.text_field :address, size: 100 %>
+  <br/>
+
+  <%= f.label :amount, '金額: ' %>
+  <%= f.text_field :amount %>
+  <br/>
+
+  <%= f.label :message, 'メッセージ: ' %>
+  <%= f.text_field :message, size: 100%>
+  <br/>
+
+  <%= f.button :submit %>
+<% end %>

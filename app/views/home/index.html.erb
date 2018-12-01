@@ -1,0 +1,45 @@
+<h1>NEM Wallet</h1>
+<%= link_to "送金", :controller => "transactions", :action => "index" %>
+
+<h2>アカウント</h2>
+<table>
+  <tbody>
+    <tr>
+      <td>アカウント：</td>
+      <td><%= @account.address %></td>
+    </tr>
+    <tr>
+      <td>残高(XEM)：</td>
+      <td><%= balance(@account.balance) %> XEM</td>
+    </tr>
+    <tr>
+      <td>重要度：</td>
+      <td><%= @account.importance %></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>入出金履歴</h2>
+<table border="1">
+  <thead>
+    <tr>
+      <th>日時</th>
+      <th>区分</th>
+      <th>金額(XEM)</th>
+      <th>手数料(XEM)</th>
+      <th>メッセージ</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @transfers_all.each do |t| %>
+      <tr>
+        <td><%= t.timestamp %></td>
+        <td><%= t.type %></td>
+        <td><%= t.amount %></td>
+        <td><%= t.fee %></td>
+        <td><%= t.message %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
